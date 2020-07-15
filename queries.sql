@@ -117,3 +117,4 @@ SELECT retirement_info.emp_no,
 FROM retirement_info
 LEFT JOIN dept_emp
 ON retirement_info.emp_no = dept_emp.emp_no;
+
