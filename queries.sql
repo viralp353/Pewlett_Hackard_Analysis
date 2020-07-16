@@ -198,6 +198,20 @@ ON (de.dept_no = d.dept_no);
 select *from dept_info
 
 
+--information for the Sales and Development teams:
+SELECT ce.emp_no,
+ce.first_name,
+ce.last_name,
+d.dept_name	
+INTO sale_develop_info
+FROM current_emp as ce
+INNER JOIN dept_emp AS de
+ON (ce.emp_no = de.emp_no)
+INNER JOIN departments AS d
+ON (de.dept_no = d.dept_no)
+WHERE dept_name IN ('Sales','Development')
+select *from sale_develop_info
+
 --Challenge
 --part 1:
 --Number of Retiring Employees by Title
