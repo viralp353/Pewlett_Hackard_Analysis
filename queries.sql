@@ -233,7 +233,7 @@ HAVING count(*) > 1;
 
 
 --Find duplicate rows and theirs ids
-SELECT * FROM 
+SELECT * FROM
   (SELECT *, count(*)
   OVER
     (PARTITION BY
@@ -242,5 +242,23 @@ SELECT * FROM
     ) AS count
 FROM emp_title) tableWithCount
 WHERE tableWithCount.count > 1;
-  
-  
+
+
+
+--Mentorship Eligibility:
+--To be eligible to participate in the mentorship program, employees will need to have a date of birth that falls between January 1, 1965 and December 31, 1965.
+SELECT e.emp_no,
+	e.first_name,
+    e.last_name,
+	t.title,
+	de.from_date,
+	de.to_date
+INTO mentorship
+FROM employees as e
+INNER JOIN titles as t
+ON (e.emp_no = t.emp_no)
+INNER JOIN dept_emp as de
+ON (e.emp_no = de.emp_no)
+WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+select * from mentorship
+
