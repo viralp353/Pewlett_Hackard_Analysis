@@ -196,4 +196,27 @@ ON (ce.emp_no = de.emp_no)
 INNER JOIN departments AS d
 ON (de.dept_no = d.dept_no);
 select *from dept_info
+
+
+--Challenge
+--part 1:
+--Number of Retiring Employees by Title
+SELECT e.emp_no,
+	e.first_name,
+    e.last_name,
+	t.title,
+	s.salary,
+	de.from_date
+INTO emp_title
+FROM employees as e
+INNER JOIN titles as t
+ON (e.emp_no = t.emp_no)
+INNER JOIN salaries as s
+ON (e.emp_no = s.emp_no)
+INNER JOIN dept_emp as de
+ON (e.emp_no = de.emp_no)
+WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+AND (e.hire_date BETWEEN '1985-01-01' AND '1988-12-31')
+ AND (de.to_date = '9999-01-01')
+select *from emp_title
 	   
