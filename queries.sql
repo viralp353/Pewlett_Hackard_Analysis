@@ -219,4 +219,28 @@ WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
 AND (e.hire_date BETWEEN '1985-01-01' AND '1988-12-31')
  AND (de.to_date = '9999-01-01')
 select *from emp_title
-	   
+
+--Count the number of rows in each group.	   
+SELECT
+  first_name,
+  last_name,
+  count(*)
+FROM emp_title
+GROUP BY
+  first_name,
+  last_name
+HAVING count(*) > 1;
+
+
+--Find duplicate rows and theirs ids
+SELECT * FROM 
+  (SELECT *, count(*)
+  OVER
+    (PARTITION BY
+      first_name,
+      last_name
+    ) AS count
+FROM emp_title) tableWithCount
+WHERE tableWithCount.count > 1;
+  
+  
