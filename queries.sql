@@ -237,28 +237,29 @@ AND (e.hire_date BETWEEN '1985-01-01' AND '1988-12-31')
 AND (de.to_date = '9999-01-01')
 select *from emp_title
 
---Count the number of rows in each group.	   
-SELECT
-  first_name,
-  last_name,
-  count(*)
-FROM emp_title
-GROUP BY
-  first_name,
-  last_name
-HAVING count(*) > 1;
+--Count the number of rows in each group.
+-- Partition the data to show only most recent title per employee
+SELECT emp_no,
+ first_name,
+ last_name,
+ title,
+ salary,
+ from_date
+INTO emp_title_list
+FROM
+ (SELECT emp_no,
+ first_name,
+ last_name,
+ title,
+ salary,
+ from_date, ROW_NUMBER() OVER
+ (PARTITION BY (emp_no)
+ ORDER BY from_date DESC) rn
+ FROM emp_title 
+ ) tmp WHERE rn = 1
+ORDER BY emp_no;
+select *from emp_title_list
 
-
---Find duplicate rows and theirs ids
-SELECT * FROM
-  (SELECT *, count(*)
-  OVER
-    (PARTITION BY
-      first_name,
-      last_name
-    ) AS count
-FROM emp_title) tableWithCount
-WHERE tableWithCount.count > 1;
 
 
 
