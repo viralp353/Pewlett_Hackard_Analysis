@@ -223,19 +223,18 @@ SELECT e.emp_no,
     e.last_name,
 	t.title,
 	s.salary,
-	de.from_date
+	t.from_date
 INTO emp_title
 FROM employees as e
 INNER JOIN titles as t
 ON (e.emp_no = t.emp_no)
 INNER JOIN salaries as s
 ON (e.emp_no = s.emp_no)
-INNER JOIN dept_emp as de
-ON (e.emp_no = de.emp_no)
 WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
 AND (e.hire_date BETWEEN '1985-01-01' AND '1988-12-31')
-AND (de.to_date = '9999-01-01')
-select *from emp_title
+AND (t.to_date = '9999-01-01');
+SELECT*FROM emp_title;
+
 
 --Count the number of rows in each group.
 -- Partition the data to show only most recent title per employee
@@ -258,8 +257,22 @@ FROM
  FROM emp_title 
  ) tmp WHERE rn = 1
 ORDER BY emp_no;
-select *from emp_title_list
+SELECT *FROM emp_title_list;
 
+--count for total title.
+SELECT COUNT(emp_no) 
+INTO title_count
+FROM emp_title_list
+SELECT *FROM title_count;
+
+
+--count for retirement employee with title
+SELECT title,
+COUNT (emp_no)
+INTO retirement_emp_title
+FROM emp_title_list
+GROUP BY title;
+SELECT *FROM retirement_emp_title;
 
 
 
@@ -269,14 +282,20 @@ SELECT e.emp_no,
 	e.first_name,
     e.last_name,
 	t.title,
-	de.from_date,
-	de.to_date
+	t.from_date,
+	t.to_date
 INTO mentorship
 FROM employees as e
 INNER JOIN titles as t
 ON (e.emp_no = t.emp_no)
-INNER JOIN dept_emp as de
-ON (e.emp_no = de.emp_no)
 WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
-select * from mentorship
+AND (t.to_date = '9999-01-01');
+SELECT *FROM mentorship;
+
+
+--counts for mentorship
+SELECT COUNT(title) 
+INTO mentorship_count
+FROM mentorship;
+SELECT *FROM mentorship_count
 
