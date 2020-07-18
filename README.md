@@ -36,5 +36,29 @@ Technical Analysis Deliverable 2: Mentorship Eligibility. A table containing emp
 
 
 
+*  Number of Retiring Employees by Title.
+          
+
+
+          --Number of Retiring Employees by Title
+            SELECT e.emp_no,
+                e.first_name,
+                e.last_name,
+                t.title,
+                s.salary,
+                t.from_date
+            INTO emp_title
+            FROM employees as e
+            INNER JOIN titles as t
+            ON (e.emp_no = t.emp_no)
+            INNER JOIN salaries as s
+            ON (e.emp_no = s.emp_no)
+            WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+            AND (e.hire_date BETWEEN '1985-01-01' AND '1988-12-31')
+            AND (t.to_date = '9999-01-01');
+            SELECT*FROM emp_title;
+
+
+
    
 
