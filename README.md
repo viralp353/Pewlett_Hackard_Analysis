@@ -36,7 +36,7 @@ Technical Analysis Deliverable 2: Mentorship Eligibility. A table containing emp
 
 
 
-*  Number of Retiring Employees by Title:
+**Number of Retiring Employees by Title:
 
 
           
@@ -66,7 +66,7 @@ Technical Analysis Deliverable 2: Mentorship Eligibility. A table containing emp
     
     
     
-*  Partition the data to show only most recent title per employee:
+**Partition the data to show only most recent title per employee:
 
 
 
@@ -91,9 +91,13 @@ Technical Analysis Deliverable 2: Mentorship Eligibility. A table containing emp
             ) tmp WHERE rn = 1
             ORDER BY emp_no;
             SELECT *FROM emp_title_list;
+            
+            
+            
+     For Partition data, I need to required partition formule. I applyed on previous created table. then i got clean data.
 
 
-*  count for each employee with title:
+**count for each employee with title:
 
 
 
@@ -101,6 +105,21 @@ Technical Analysis Deliverable 2: Mentorship Eligibility. A table containing emp
                 INTO title_count
                 FROM emp_title_list
                 SELECT *FROM title_count;
+                
+                
+    By using count method. I got 33118  employee with title.
+                
+                
+ **count for retirement employee with title
+ 
+ 
+ 
+                SELECT title,
+                COUNT (emp_no)
+                INTO retirement_emp_title
+                FROM emp_title_list
+                GROUP BY title;
+                SELECT *FROM retirement_emp_title;
 
 
 
