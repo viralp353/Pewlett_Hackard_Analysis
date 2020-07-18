@@ -36,7 +36,9 @@ Technical Analysis Deliverable 2: Mentorship Eligibility. A table containing emp
 
 
 
-*  Number of Retiring Employees by Title.
+*  Number of Retiring Employees by Title:
+
+
           
 
 
@@ -59,7 +61,11 @@ Technical Analysis Deliverable 2: Mentorship Eligibility. A table containing emp
             SELECT*FROM emp_title;
 
 
-
+    For Analysis, I need to required employees.csv,title,csv and salary.csv.I joined  3 tables to use  inner join for employess with title and salary. I considered for retiring     employee who were born  between Jan. 1, 1952 and Dec. 31, 1955. and also on hire date(BETWEEN '1985-01-01' AND '1988-12-31).I got table with many duplicates .This is because     some employees have switched titles over the years.then I decided  Partition data to show only most recent title per employee.
+    
+    
+    
+    
 *  Partition the data to show only most recent title per employee:
 
 
