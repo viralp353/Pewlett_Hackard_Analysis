@@ -151,7 +151,7 @@ Technical Analysis Deliverable 2: Mentorship Eligibility. A table containing emp
             
             
             
- For mentorship eligibility,The Employees table has all of the information I need and uses the emp_no,first_name,last_name. The title table has the additional information I need title,from_date,to_date.I cann't use only Employees table bacause  The only problem is that the Employees table holds data for all employees, even the ones who are not qualify for mentorship. If i use this table, I will have a far bigger list to present than expected that'why.I joined  2 tables to use  inner join for employess with title.I considered for mentorship  employee who were born  between Jan. 1, 1965 and Dec. 31, 1965.I got clean data.
+ For mentorship eligibility,The Employees table has all of the information I need and uses the emp_no,first_name,last_name. The title table has the additional information I need title,from_date,to_date.I cann't use only Employees table bacause  The only problem is that the Employees table holds data for all employees, even the ones who are not qualify for mentorship. If i use this table, I will have a far bigger list to present than expected that'why.I joined  2 tables to use  inner join for employess with title.I considered for mentorship  employee who were born  between Jan. 1, 1965 and Dec. 31, 1965. There were 1549 rows, including the header row. Data were containing  of all employees who were born  1965.
 
 
 ####   Total counts for mentorship:
