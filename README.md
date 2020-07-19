@@ -1,6 +1,12 @@
 # Pewlett_Hackard_Analysis
 
 
+## Challenge object:
+
+
+Determine the total number of employees per title who will be retiring, and identify employees who are eligible to participate in a mentorship program. This information will help to company prepare for the “silver tsunami” as many current employees reach retirement age.
+
+
 ## Challenge Overview
 
  Challenge consists of three parts: two additional analyses and a technical report . for complete these tasks, submit the following deliverables:
@@ -166,6 +172,14 @@ Technical Analysis Deliverable 2: Mentorship Eligibility. A table containing emp
                 
                 
  By using count(), I got  1549 number of employees for mentorship.
+ 
+ 
+ 
+ 
+ I didn't face  any  serious problem for analysis.I  got many duplicates in part 1 analysis because of some employees have switched titles over the years that why's I was frustrated. but taking some steps like partition,groupby and counts I was able to get clean data.
+ 
+ As per all my over Analysis in this challenge,First part was contained who were born  between Jan. 1, 1952 and Dec. 31, 1955. and also on hire date(BETWEEN '1985-01-01' AND '1988-12-31).They wiil 33118 employees retriring as per analysis.They were big number  of Senior enginner and senior staffe who wiil  retiring based  on  analysis.on other part in different departmets looks good.I would like to recommand to company,They should  be start  promotion  at lower level employees to higher level in company departments.because as per analysis,They were only 2 manager in company.Second part were contained  mentorship's employee who were born  between Jan. 1, 1965 and Dec. 31, 1965.They were 1549 employees eligibe for mentorship programme.It is good number for company.mentorship's employees wiil helpful for new hire employees as a  share knowledge and experience about company.
+  
 
 
 
