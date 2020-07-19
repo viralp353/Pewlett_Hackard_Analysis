@@ -36,7 +36,7 @@ Technical Analysis Deliverable 2: Mentorship Eligibility. A table containing emp
 
 
 
-#### *  Number of Retiring Employees by Title:
+####  Number of Retiring Employees by Title:
 
 
           
@@ -61,12 +61,12 @@ Technical Analysis Deliverable 2: Mentorship Eligibility. A table containing emp
             SELECT*FROM emp_title;
 
 
-    For Analysis, I need to required employees.csv,title,csv and salary.csv.I joined  3 tables to use  inner join for employess with title and salary. I considered for retiring     employee who were born  between Jan. 1, 1952 and Dec. 31, 1955. and also on hire date(BETWEEN '1985-01-01' AND '1988-12-31).I got table with many duplicates .This is because     some employees have switched titles over the years.then I decided  Partition data to show only most recent title per employee.
+  For my Analysis,The Employees table has all of the information I need and uses the emp_no,first_name,last_name. The Salaries table has the additional information I need salary and title table has from date. The only problem is that the Employees table holds data for all employees, even the ones who are not retiring. If i use this table, I will have a far bigger list to present than expected that'why.I joined  3 tables to use  inner join for employess with title and salary. I considered for retiring  employee who were born  between Jan. 1, 1952 and Dec. 31, 1955. and also on hire date(BETWEEN '1985-01-01' AND '1988-12-31).I got table with many duplicates .This is because  some employees have switched titles over the years.then I decided  Partition data to show only most recent title per employee.
     
     
     
     
-**Partition the data to show only most recent title per employee:
+#### Partition the data to show only most recent title per employee:
 
 
 
@@ -94,10 +94,10 @@ Technical Analysis Deliverable 2: Mentorship Eligibility. A table containing emp
             
             
             
-     For Partition data, I need to required partition formule. I applyed on previous created table. then i got clean data.
+  For Partition data, I need to required partition formule. I applyed on previous created table. then i got clean data.
 
 
-**count for each employee with title:
+#### count for each employee with title:
 
 
 
@@ -107,10 +107,10 @@ Technical Analysis Deliverable 2: Mentorship Eligibility. A table containing emp
                 SELECT *FROM title_count;
                 
                 
-    By using count method. I got 33118  employee with title.
+ By using count method. I got 33118  employee with title.then I need each departments employees list.
                 
                 
- **count for retirement employee with title
+ #### count for retirement employee with title
  
  
  
@@ -120,6 +120,11 @@ Technical Analysis Deliverable 2: Mentorship Eligibility. A table containing emp
                 FROM emp_title_list
                 GROUP BY title;
                 SELECT *FROM retirement_emp_title;
+                
+                
+                
+  Finally, I got retirement employees with recent titleby using count() and group by.Based on my Analysis ,Company have 7 different departments employees ready to retriment.
+  list for  each departments are "Engineer	- 2711", "Senior Engineer -	13651", "Manager- 2 ","Assistant Engineer"	- 251", "Staff-	2022 ", "Senior Staff-	12872","Technique Leader	-1609 ",Company have a lot of senior employees  in  senior enginneer & senior staff.
 
 
 
@@ -127,7 +132,7 @@ Technical Analysis Deliverable 2: Mentorship Eligibility. A table containing emp
 
 
 
-*  Mentorship Eligibility:
+####  Mentorship Eligibility:
 
 
             SELECT e.emp_no,
@@ -143,9 +148,13 @@ Technical Analysis Deliverable 2: Mentorship Eligibility. A table containing emp
             WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
             AND (t.to_date = '9999-01-01');
             SELECT *FROM mentorship;
+            
+            
+            
+ For mentorship eligibility,The Employees table has all of the information I need and uses the emp_no,first_name,last_name. The title table has the additional information I need title,from_date,to_date.I cann't use only Employees table bacause  The only problem is that the Employees table holds data for all employees, even the ones who are not qualify for mentorship. If i use this table, I will have a far bigger list to present than expected that'why.I joined  2 tables to use  inner join for employess with title.I considered for mentorship  employee who were born  between Jan. 1, 1965 and Dec. 31, 1965.I got clean data.
 
 
-*   Total counts for mentorship:
+####   Total counts for mentorship:
 
 
 
@@ -153,6 +162,10 @@ Technical Analysis Deliverable 2: Mentorship Eligibility. A table containing emp
                 INTO mentorship_count
                 FROM mentorship;
                 SELECT *FROM mentorship_count
+                
+                
+                
+ By using count(), I got  1549 number of employees for mentorship.
 
 
 
